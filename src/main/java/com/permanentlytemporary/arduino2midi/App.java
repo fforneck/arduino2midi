@@ -1,4 +1,4 @@
-package com.permanentlytemporary;
+package com.permanentlytemporary.arduino2midi;
 
 /**
  * Hello world!
