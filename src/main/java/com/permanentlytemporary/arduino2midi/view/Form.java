@@ -202,7 +202,7 @@ public class Form {
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
             leftPanel.add(commPanel);
             leftPanel.add(analogSensorsPanel);
-            leftPanel.add(logPanel);
+            //leftPanel.add(logPanel);
             leftPanel.add(testPanel);
             pane.add(menuBar, BorderLayout.PAGE_START);
             pane.add(leftPanel, BorderLayout.LINE_START);
