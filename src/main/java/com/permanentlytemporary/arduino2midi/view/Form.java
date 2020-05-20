@@ -2,20 +2,8 @@ package com.permanentlytemporary.arduino2midi.view;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import com.permanentlytemporary.arduino2midi.App;
 import com.permanentlytemporary.arduino2midi.model.AnalogSensor;
@@ -60,6 +48,15 @@ public class Form {
         try {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(1600, 1000);
+
+            // Creating Menu
+            JMenuBar menuBar = new JMenuBar();
+            JMenu extrasMenu = new JMenu("Extras");
+            menuBar.add(extrasMenu);
+            JMenuItem consoleMenuItem = new JMenuItem("Show Console");
+            extrasMenu.add(consoleMenuItem);
+            JMenuItem plotterMenuItem = new JMenuItem("Show Plotter");
+            extrasMenu.add(plotterMenuItem);
 
             // Creating the communication panel
             JPanel commPanel = new JPanel();
@@ -172,10 +169,9 @@ public class Form {
             }
             
             // Text Area at the Center
-            JPanel logPanel = new JPanel();
-            logPanel.setBorder(BorderFactory.createTitledBorder("Activity Log"));
-            
-            logPanel.add(logTextArea);
+            //JPanel logPanel = new JPanel();
+            //logPanel.setBorder(BorderFactory.createTitledBorder("Activity Log"));
+            //logPanel.add(logTextArea);
             
             //Creating the panel at bottom and adding components
             JPanel testPanel = new JPanel();
@@ -208,6 +204,7 @@ public class Form {
             leftPanel.add(analogSensorsPanel);
             leftPanel.add(logPanel);
             leftPanel.add(testPanel);
+            pane.add(menuBar, BorderLayout.PAGE_START);
             pane.add(leftPanel, BorderLayout.LINE_START);
             pane.add(leftDigitalSensorsPanel, BorderLayout.CENTER);
             pane.add(rightDigitalSensorsPanel, BorderLayout.LINE_END);
