@@ -8,21 +8,23 @@ import javax.swing.SpinnerNumberModel;
 
 import com.permanentlytemporary.arduino2midi.utils.Util;
 
-public class AnalogSensorPanel extends JPanel {
+public class DigitalSensorPanel extends JPanel {
 
-    private static final long serialVersionUID = -1998293513542361006L;
-    
+    private static final long serialVersionUID = -4822182481462684968L;
+
     private JCheckBox enabledCheckBox = new JCheckBox();
     SpinnerNumberModel channelModel = new SpinnerNumberModel(0, 0, 15, 1);
     SpinnerNumberModel noteModel = new SpinnerNumberModel(0, 0, 255, 1);
-    SpinnerNumberModel sensitivityModel = new SpinnerNumberModel(0, 0, 255, 1);
+    SpinnerNumberModel velocityModel = new SpinnerNumberModel(0, 0, 255, 1);
+    SpinnerNumberModel randomizationModel = new SpinnerNumberModel(0, 0, 255, 1);
     SpinnerNumberModel durationModel = new SpinnerNumberModel(500, 0, 1000, 100);
     private JSpinner channelSpinner = new JSpinner(channelModel);
     private JSpinner noteSpinner = new JSpinner(noteModel);
-    private JSpinner sensitivitySpinner = new JSpinner(sensitivityModel);
+    private JSpinner velocitySpinner = new JSpinner(velocityModel);
+    private JSpinner randomizationSpinner = new JSpinner(randomizationModel);
     private JSpinner durationSpinner = new JSpinner(durationModel);
 
-    public AnalogSensorPanel(String name) {
+    public DigitalSensorPanel(String name) {
         super();
         JLabel nameLabel = new JLabel(name);
         this.add(nameLabel);
@@ -35,10 +37,13 @@ public class AnalogSensorPanel extends JPanel {
         JLabel noteLabel = new JLabel("Note");
         this.add(noteLabel);
         this.add(noteSpinner);
-        JLabel sensitivityLabel = new JLabel("Sensitivity");
-        this.add(sensitivityLabel);
-        this.add(sensitivitySpinner);
-        JLabel durationLabel = new JLabel("Duration");
+        JLabel velocityLabel = new JLabel("Velocity");
+        this.add(velocityLabel);
+        this.add(velocitySpinner);
+        JLabel randomizationLabel = new JLabel("Randomization");
+        this.add(randomizationLabel);
+        this.add(randomizationSpinner);
+        JLabel durationLabel = new JLabel("Duration:");
         this.add(durationLabel);
         this.add(durationSpinner);
     }
@@ -48,18 +53,23 @@ public class AnalogSensorPanel extends JPanel {
     }
 
     public Integer getChannel() {
-    	return Util.getSpinnerValue(channelSpinner, "channel");
+        return Util.getSpinnerValue(channelSpinner, "channel");
     }
 
     public int getNote() {
     	return Util.getSpinnerValue(noteSpinner, "note");
+    }
+    
+    public int getVelocity() {
+    	return Util.getSpinnerValue(velocitySpinner, "velocity");
+    }
+    
+    public int getRandomization() {
+    	return Util.getSpinnerValue(randomizationSpinner, "randomization");
     }
 
     public int getDuration() {
     	return Util.getSpinnerValue(durationSpinner, "duration");
     }
 
-    public int getSensitivity() {
-    	return Util.getSpinnerValue(sensitivitySpinner, "sensitivity");
-    }
 }
